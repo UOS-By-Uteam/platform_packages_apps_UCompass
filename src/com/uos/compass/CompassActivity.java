@@ -44,6 +44,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import android.support.v4.content.ContextCompat;
+import android.support.v4.app.ActivityCompat;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.Manifest;
+
 public class CompassActivity extends Activity {
 	public static final String PREFS_NAME = "com.uos.alicompass";
 	public static final String VALUE_HAS_MAEKED = "value has marked";
@@ -152,6 +158,13 @@ public class CompassActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+                // Check if this app have any permission to play around
+                int MyVersion = Build.VERSION.SDK_INT;
+                if (MyVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                    if (!checkIfAlreadyhavePermission()) {
+                        requestForSpecificPermission();
+                    }
+                }
 		setContentView(R.layout.main);
 		initResources();
 		initServices();
@@ -601,4 +614,33 @@ public class CompassActivity extends Activity {
 		SharedPreferences settings = this.getSharedPreferences(PREFS_NAME, 0);
 		return settings.getBoolean(item, flag);
 	}
+
+
+    private boolean checkIfAlreadyhavePermission() {
+        int result = ContextCompat.checkSelfPermission(this, Manifest.permission.GET_ACCOUNTS);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestForSpecificPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 101:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //granted
+                } else {
+                    //not granted
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
 }
