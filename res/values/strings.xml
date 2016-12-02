@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Compass</string>
+    <string name="location_north">North Latitude</string>
+    <string name="location_south">South Latitude</string>
+    <string name="location_east">East Longitude</string>
+    <string name="location_west">West Longitude</string>
+    <string name="north">N</string>
+    <string name="east_north">NE</string>
+    <string name="east">E</string>
+    <string name="east_south">SE</string>
+    <string name="south">S</string>
+    <string name="west_south">SW</string>
+    <string name="west">W</string>
+    <string name="west_north">NW</string>
+    <string name="pressure">"Pressure "</string>
+    <string name="altitude">"Altitude "</string>
+    <string name="ali_dlg_confirm_mobile">"Allow Compass to access your location through the Internet and calibrate the elevation? It may incur a small amount of data usage."</string>
+    <string name="ali_dlg_confirm_mobile_1">"Allow Compass to access your location through the Internet? It may incur a small amount of data usage."</string>
+    <string name="dlg_ok">"OK"</string>
+    <string name="cancel">"Cancel"</string>
+    <string name="en_vertical_north">N</string>
+    <string name="en_vertical_east_north">NE</string>
+    <string name="en_vertical_east">E</string>
+    <string name="en_vertical_east_south">SE</string>
+    <string name="en_vertical_south">S</string>
+    <string name="en_vertical_west_south">SW</string>
+    <string name="en_vertical_west">W</string>
+    <string name="en_vertical_west_north">NW</string>
+
+</resources>
